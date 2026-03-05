@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--font-sans:
+		var(--font-inter), ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-heading:
+		var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--radius-2xl: calc(var(--radius) + 8px);
+	--radius-3xl: calc(var(--radius) + 12px);
+	--radius-4xl: calc(var(--radius) + 16px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-cta: var(--cta);
+	--color-cta-foreground: var(--cta-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+	--radius: 0.625rem;
+	--background: #ffffff;
+	--foreground: #003382;
+	--card: #ffffff;
+	--card-foreground: #003382;
+	--popover: #ffffff;
+	--popover-foreground: #003382;
+	/* Primary: Navy blue - for CTAs, headings, links, icons */
+	--primary: #003382;
+	--primary-foreground: #ffffff;
+	/* Secondary: Neutral gray - for back buttons, secondary actions */
+	--secondary: #f4f4f5;
+	--secondary-foreground: #484848;
+	/* Muted: For subtle text and backgrounds */
+	--muted: #f4f4f5;
+	--muted-foreground: #848484;
+	/* Accent: Yellow/Gold - for card backgrounds, highlighted sections */
+	--accent: #FFB700;
+	--accent-foreground: #003382;
+	/* CTA: Bright blue - for call-to-action buttons */
+	--cta: #006CE4;
+	--cta-foreground: #ffffff;
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: #e5e7eb;
+	--input: #e5e7eb;
+	--ring: #003382;
+	--chart-1: 220 70% 25%;
+	--chart-2: 210 75% 30%;
+	--chart-3: 230 65% 20%;
+	--chart-4: 200 80% 35%;
+	--chart-5: 215 70% 40%;
+	--sidebar: #ffffff;
+	--sidebar-foreground: #003382;
+	--sidebar-primary: #003382;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #EEF4F9;
+	--sidebar-accent-foreground: #003382;
+	--sidebar-border: #e5e7eb;
+	--sidebar-ring: #003382;
+}
+
+.dark {
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.205 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.205 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.556 0 0);
+	--chart-1: 220 70% 25%;
+	--chart-2: 210 75% 30%;
+	--chart-3: 230 65% 20%;
+	--chart-4: 200 80% 35%;
+	--chart-5: 215 70% 40%;
+	--sidebar: oklch(0.205 0 0);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.269 0 0);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	h1, h2, h3, h4 {
+		font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+	}
+	strong {
+		@apply font-semibold text-primary;
+	}
+
+  .main-container {
+    @apply mx-auto max-w-[1400px] px-4 md:px-10;
+  }
+
+	/* Funnel-specific typography utilities */
+	.funnel-h1 {
+		@apply text-2xl md:text-3xl font-bold text-primary;
+	}
+	.funnel-h2 {
+		@apply text-xl md:text-2xl font-semibold text-primary;
+	}
+
+	/* Breadcrumb utility */
+	.breadcrumb {
+		@apply text-sm text-muted-foreground hover:text-foreground transition-colors;
+	}
+
+	/* Table styles */
+	.table-container {
+		@apply mt-10 mb-6 md:mx-12 overflow-x-auto;
+	}
+
+	.table {
+		@apply min-w-full border-gray-200;
+	}
+
+	.cms-table-container {
+		@apply mt-10 mb-6 overflow-x-auto max-w-fit;
+	}
+
+	.cms-table {
+		@apply border-gray-200 mx-auto;
+	}
+
+	.header-row {
+		@apply text-primary bg-zinc-50 text-lg font-medium;
+	}
+
+	.tr-last {
+		@apply border-t-2 text-lg text-secondary-foreground bg-zinc-50 font-medium;
+	}
+
+	.city-table-container {
+		@apply mt-6 mb-10 md:mx-12 overflow-x-auto;
+	}
+
+	.th {
+		@apply p-2 text-left font-semibold whitespace-nowrap;
+	}
+
+	.tr {
+		@apply border-t-2 text-lg text-secondary-foreground;
+	}
+
+	.td {
+		@apply p-2 whitespace-nowrap;
+	}
+
+	.table-div {
+		@apply pl-2 text-lg text-gray-600;
+	}
+
+	.table-link {
+		@apply text-lg text-primary underline underline-offset-2;
+	}
+
+	/* Scroll offset for TOC anchor targets — clears sticky navbar/TOC bar */
+	section[id] {
+		scroll-margin-top: 140px;
+	}
+	@media (min-width: 768px) {
+		section[id] {
+			scroll-margin-top: 120px;
+		}
+	}
+}

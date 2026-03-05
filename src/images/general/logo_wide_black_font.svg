@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40">
+  <!-- Text - Dark for light funnel background -->
+  <text x="0" y="18" font-family="'Montserrat', system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#000000">Deutsche Maklerauskunft</text>
+
+  <!-- German flag horizontal bar: width 47, height 4 -->
+  <rect x="0" y="26" width="46" height="4" fill="#000000"/>
+  <rect x="46" y="26" width="46" height="4" fill="#DD0000"/>
+  <rect x="92" y="26" width="46" height="4" fill="#FFCC00"/>
+
+  <!-- Year -->
+  <text x="143" y="31" font-family="'Montserrat', system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#000000">2026</text>
+</svg>

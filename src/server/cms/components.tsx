@@ -1,0 +1,566 @@
+import type {
+	PortableTextReactComponents,
+	PortableTextTypeComponentProps,
+} from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import { AlertTriangle, Check, Info, Lightbulb, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { PiBookOpenText } from "react-icons/pi";
+import { cn } from "@/lib/utils";
+import { Typography } from "@/components/ui/typography";
+import { Sanity } from "@/server/cms/Sanity";
+
+const sanity = new Sanity();
+const imageBuilder = createImageUrlBuilder(sanity.client);
+export function imageUrl(source: string) {
+	return `${imageBuilder.image(source).url()}?auto=format`;
+}
+
+type ChildrenProps = {
+	children?: React.ReactNode;
+	className?: string;
+	asset?: {
+		_ref?: string;
+	};
+};
+
+const P = ({ children }: ChildrenProps) => {
+	return <Typography variant="p">{children}</Typography>;
+};
+
+const H1 = ({ children }: ChildrenProps) => {
+	return <Typography variant="h1">{children}</Typography>;
+};
+
+
+const H2 = ({ children }: ChildrenProps) => {
+	return <Typography variant="h2">{children}</Typography>;
+};
+
+const H3 = ({ children }: ChildrenProps) => {
+	return <Typography variant="h3">{children}</Typography>;
+};
+
+const H4 = ({ children }: ChildrenProps) => {
+	return <Typography variant="h4">{children}</Typography>;
+};
+
+const Strong = ({ children }: ChildrenProps) => {
+	return (
+		<span className="font-semibold text-gray-600 text-xs">{children}</span>
+	);
+};
+
+const BulletListItem = ({ children }: ChildrenProps) => (
+	<li>{children}</li>
+);
+
+// Custom component for numbered list items
+const NumberedListItem = ({ children }: ChildrenProps) => (
+	<li>{children}</li>
+);
+
+const InsideQuote = ({ children }: ChildrenProps) => (
+	<div className="my-4 border-primary border-l-4 py-3 pl-4 text-gray-600 text-xl">
+		{children}
+	</div>
+);
+
+const BlockQuote = ({ children }: ChildrenProps) => (
+	<div className="my-4 border-a border-l-4 bg-accent p-4 text-gray-600 text-xl">
+		{children}
+	</div>
+);
+
+const InfoBox: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	const colorSchema = {
+		info: {
+			icon: Info,
+			bgColor: "bg-accent",
+			borderColor: "border-primary",
+			textColor: "text-primary",
+		},
+		warning: {
+			icon: AlertTriangle,
+			bgColor: "bg-red-50",
+			borderColor: "border-red-500",
+			textColor: "text-red-500",
+		},
+		tip: {
+			icon: Lightbulb,
+			bgColor: "bg-gray-50",
+			borderColor: "border-green-500",
+			textColor: "text-green-500",
+		},
+	} as const;
+
+	const schema =
+		colorSchema[value.type as keyof typeof colorSchema] ?? colorSchema.info;
+	const Icon = schema.icon;
+	return (
+		<div
+			className={cn(
+				"mt-6 mb-6 rounded-2xl border-l-4 px-8 py-4",
+				schema.bgColor,
+				schema.borderColor,
+			)}
+		>
+			<div
+				className={cn(
+					"mt-2 mb-4 flex w-full gap-x-2 border-b pb-4",
+					schema.borderColor,
+				)}
+			>
+				<Icon className={cn("h-6 w-6", schema.textColor)} />
+				<div className={cn("m-0 font-semibold text-xl", schema.textColor)}>
+					{value.heading}
+				</div>
+			</div>
+			<PortableTextRenderer input={value.text} />
+		</div>
+	);
+};
+
+const ImageComponent: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	return (
+		<div className="relative mx-auto mt-4 mb-8 aspect-video w-full">
+			<Image
+				alt="Alt Text"
+				className="rounded-2xl object-cover"
+				fill
+				sizes="(max-width: 768px) 100vw, 800px"
+				src={imageUrl(value)}
+			/>
+		</div>
+	);
+};
+
+const ImageComponentWithDetails: React.FC<
+	PortableTextTypeComponentProps<any>
+> = ({ value }: any) => {
+	let displayDomain = "";
+	if (value.link) {
+		try {
+			displayDomain = new URL(value.link).hostname;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	return (
+		<>
+			<div className="relative mx-auto mt-4 mb-4 aspect-video w-full">
+				<Image
+					alt={value.altText || "Image"}
+					className="rounded-2xl object-cover"
+					fill
+					sizes="(max-width: 768px) 100vw, 800px"
+					src={imageUrl(value.image)}
+				/>
+			</div>
+			{displayDomain && (
+				<div className="mb-4 truncate text-lg">
+					Quelle:{" "}
+					<Link className="truncate text-lg" href={value.link} target="_blank">
+						{displayDomain}
+					</Link>
+				</div>
+			)}
+		</>
+	);
+};
+
+const Table: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	return (
+		<div className="table-container">
+			<table className="table">
+				<thead>
+					<tr className="header-row">
+						{/* @ts-expect-error */}
+						{value.rows[0].cells.map((cell, index) => (
+							<th className="th" key={cell._key || index}>
+								{cell}
+							</th>
+						))}
+					</tr>
+				</thead>
+				<tbody>
+					{/* @ts-expect-error */}
+					{value.rows.slice(1).map((row, index) => (
+						<tr className="tr" key={row._key || index}>
+							{/* @ts-expect-error */}
+							{row.cells.map((cell, cellIndex) => (
+								<td className="td" key={cell._key || cellIndex}>
+									{cell}
+								</td>
+							))}
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	);
+};
+
+const CheckListItem = ({ children, type }: any) => {
+	const isPro = type === "pro";
+	return (
+		<li className="ml-0 flex items-start gap-3">
+			{isPro ? (
+				<Check className="mt-1 h-5 w-5 shrink-0 text-green-600" />
+			) : (
+				<X className="mt-1 h-5 w-5 shrink-0 text-red-600" />
+			)}
+			<span className="leading-relaxed">{children}</span>
+		</li>
+	);
+};
+
+const ProConList: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	const withIcon = value.type === "checkmarks";
+
+	return (
+		<div className="my-8 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+			{/* Unified layout that works for both desktop and mobile */}
+			<div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-2 md:divide-x md:divide-y-0">
+				{/* Pros column */}
+				{/* Pros column */}
+				<div className="p-6 md:p-8 border-l-4 border-green-500 bg-white">
+					<Typography variant="h4" className="md:mb-6 text-green-700">{value.titlePro}</Typography>
+					<Typography variant="ul" className={withIcon ? "ml-0 list-none" : ""}>
+						{value.pros.map((pro: string, index: number) =>
+							withIcon ? (
+								<CheckListItem key={index} type="pro">
+									{pro}
+								</CheckListItem>
+							) : (
+								<li key={index}>{pro}</li>
+							)
+						)}
+					</Typography>
+				</div>
+
+				{/* Cons column */}
+				<div className="p-6 md:p-8 border-l-4 border-red-500 bg-white">
+					<Typography variant="h4" className="md:mb-6 text-red-700">{value.titleCon}</Typography>
+					<Typography variant="ul" className={withIcon ? "ml-0 list-none" : ""}>
+						{value.cons.map((con: string, index: number) =>
+							withIcon ? (
+								<CheckListItem key={index} type="con">
+									{con}
+								</CheckListItem>
+							) : (
+								<li key={index}>{con}</li>
+							)
+						)}
+					</Typography>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const Definition: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	return (
+		<div
+			className={cn(
+				"mt-6 mb-6 rounded-2xl border-4 border-primary bg-accent px-8 py-4",
+			)}
+		>
+			<dl className={cn("mt-2 mb-4 flex w-full items-center gap-x-2 pb-4")}>
+				<PiBookOpenText className={cn("h-12 w-12", "text-primary")} />
+				<dt className="font-semibold text-2xl text-primary">{value.heading}</dt>
+			</dl>
+			<dd>
+				<PortableTextRenderer input={value.text} />
+			</dd>
+		</div>
+	);
+};
+
+const DetailedList: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	// value has type = "numbered" or "bullet" or "step-by-step" or "checkmarks"
+	// item.heading -> string
+	// item.content -> blockContent
+
+	switch (value.type) {
+		case "numbered":
+			return (
+				<div>
+					<Typography variant="ol">
+						{value.items.map((item: any, index: number) => (
+							<li key={index}>
+								<Typography variant="h4">{item.heading}</Typography>
+								<PortableText value={item.content} />
+							</li>
+						))}
+					</Typography>
+				</div>
+			);
+		case "step-by-step":
+			return (
+				<div className="my-4 rounded-2xl bg-accent p-8 pb-6">
+					<Typography variant="ol" className="list-none">
+						{value.items.map((item: any, index: number) => (
+							<li className="ml-0 flex gap-4" key={index}>
+								<div className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-sm text-white">
+									{index + 1}
+								</div>
+								<div>
+									<Typography variant="h4" className="mt-0 font-semibold text-primary text-xl">
+										{item.heading}
+									</Typography>
+									<PortableTextRenderer input={item.content} />
+								</div>
+							</li>
+						))}
+					</Typography>
+				</div>
+			);
+		case "checkmarks":
+			return (
+				<Typography variant="ol" className="list-none space-y-8">
+					{value.items.map((item: any, index: number) => (
+						<li className="ml-0 flex gap-4" key={index}>
+							<Check className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
+							<div>
+								<Typography variant="h4" className="mt-0 font-semibold text-primary text-xl">
+									{item.heading}
+								</Typography>
+								<PortableTextRenderer input={item.content} />
+							</div>
+						</li>
+					))}
+				</Typography>
+			);
+		default: // "bullet":
+			return (
+				<div>
+					<Typography variant="ul">
+						{value.items.map((item: any, index: number) => (
+							<li key={index}>
+								<Typography variant="h4">{item.heading}</Typography>
+								<PortableText value={item.content} />
+							</li>
+						))}
+					</Typography>
+				</div>
+			);
+	}
+};
+
+const SimpleList: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	// value has type = "numbered" or "bullet" or "step-by-step" or "checkmarks"
+	// item.content -> blockContent
+
+	switch (value.type) {
+		case "numbered":
+			return (
+				<div>
+					<Typography variant="ol">
+						{value.items.map((item: any, index: number) => (
+							<li key={index}>
+								<PortableText value={item.content} />
+							</li>
+						))}
+					</Typography>
+				</div>
+			);
+		case "step-by-step":
+			return (
+				<Typography variant="ol" className="list-none">
+					{value.items.map((item: any, index: number) => (
+						<li className="ml-0 flex gap-4" key={index}>
+							<div className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-sm text-white">
+								{index + 1}
+							</div>
+							<div>
+								<PortableTextRenderer input={item.content} />
+							</div>
+						</li>
+					))}
+				</Typography>
+			);
+		case "checkmarks":
+			return (
+				<Typography variant="ol" className="list-none">
+					{value.items.map((item: any, index: number) => (
+						<li className="mb-0 ml-0 flex gap-4" key={index}>
+							<Check className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
+							<div>
+								<PortableTextRenderer input={item.content} />
+							</div>
+						</li>
+					))}
+				</Typography>
+			);
+		default: // "bullet":
+			return (
+				<div>
+					<Typography variant="ul">
+						{value.items.map((item: any, index: number) => (
+							<li key={index}>
+								<PortableText value={item.content} />
+							</li>
+						))}
+					</Typography>
+				</div>
+			);
+	}
+};
+
+const Formula: React.FC<PortableTextTypeComponentProps<any>> = ({
+	value,
+}: any) => {
+	return (
+		<div className="mt-6 mb-6 rounded-2xl bg-gray-50 px-8 py-4">
+			<Typography variant="h3">Formel</Typography>
+			<div className="space-y-6">
+				<div className="rounded-xl border border-gray-200 bg-white p-6 font-mono text-lg">
+					{value.formula}
+				</div>
+
+				<div className="space-y-4">
+					{value.explanation.map((item: any, index: number) => (
+						<Typography variant="ol" key={index}>
+							<li>
+								<span className="font-semibold text-primary">
+									{item.title}:{" "}
+								</span>
+								<span className="text-gray-700">{item.description}</span>
+							</li>
+						</Typography>
+					))}
+				</div>
+
+				{value.examples && (
+					<div className="mt-6 border-t pt-4">
+						<div className="text-gray-700">
+							<PortableText value={value.examples} />
+						</div>
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export const sanityPortableTextComponents: Partial<PortableTextReactComponents> =
+	{
+		block: {
+			normal: P,
+      h1: H1,
+			h2: H2,
+			h3: H3,
+			h4: H4,
+			strong: Strong,
+			blockquote: BlockQuote,
+			insidequote: InsideQuote,
+		},
+		marks: {
+			link: ({ children, value }: any) => (
+				<Link
+					href={value?.href || "#"}
+					className="font-medium text-primary underline underline-offset-2"
+					target={value?.href?.startsWith("http") ? "_blank" : undefined}
+					rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+				>
+					{children}
+				</Link>
+			),
+		},
+		list: {
+			bullet: ({ children }: ChildrenProps) => (
+				<Typography variant="ul">{children}</Typography>
+			),
+			number: ({ children }: ChildrenProps) => (
+				<Typography variant="ol">{children}</Typography>
+			),
+		},
+		listItem: {
+			bullet: BulletListItem,
+			number: NumberedListItem,
+		},
+		types: {
+			image: ImageComponent,
+			imageWithDetails: ImageComponentWithDetails,
+			infoBox: InfoBox,
+			table: Table,
+			formula: Formula,
+			simpleList: SimpleList,
+			detailedList: DetailedList,
+			proConList: ProConList,
+			definition: Definition,
+		},
+	};
+
+export const PortableTextRenderer = ({
+	input,
+	className,
+}: {
+	input: any;
+	className?: string;
+}) => {
+	return (
+		<div className={className}>
+			<PortableText components={sanityPortableTextComponents} value={input} />
+		</div>
+	);
+};
+
+const summary = ({ children }: ChildrenProps) => {
+	return (
+		<p className="mb-4 text-gray-600 leading-[28px] md:text-xl">{children}</p>
+	);
+};
+
+const summaryBulletListItem = ({ children }: ChildrenProps) => (
+	<li>{children}</li>
+);
+
+const summaryTextComponents: Partial<PortableTextReactComponents> = {
+	block: {
+		normal: summary,
+	},
+	listItem: {
+		bullet: summaryBulletListItem,
+	},
+};
+
+export const SummaryTextRender = ({ input }: { input: any }) => {
+	return <PortableText components={summaryTextComponents} value={input} />;
+};
+
+export const PortableBlogRenderer = ({ input }: { input: any }) => {
+	let h2Counter = 1;
+
+	const customComponents = {
+		...sanityPortableTextComponents,
+		block: {
+			...sanityPortableTextComponents.block,
+			h2: (props: any) => {
+				const id = `sec${h2Counter}`;
+				h2Counter += 1;
+				return <Typography variant="h2" id={id}>{props.children}</Typography>;
+			},
+		},
+	} as Partial<PortableTextReactComponents>;
+
+	return <PortableText components={customComponents} value={input} />;
+};

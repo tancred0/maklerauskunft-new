@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="40" viewBox="0 0 180 40">
+  <!-- German flag vertical bar -->
+  <rect x="0" y="4" width="6" height="10.33" fill="#000000"/>
+  <rect x="0" y="14.66" width="6" height="10.33" fill="#DD0000"/>
+  <rect x="0" y="25.32" width="6" height="10.33" fill="#FFCC00"/>
+
+  <!-- Text - Black for light backgrounds, tighter letter spacing (letter-spacing: -0.02em) -->
+  <text x="10" y="18" font-family="'Montserrat', system-ui, -apple-system, sans-serif" font-size="16.5" font-weight="300" fill="#FFFFFF" letter-spacing="-0.02em">Deutsche</text>
+  <text x="10" y="34" font-family="'Montserrat', system-ui, -apple-system, sans-serif" font-size="16.5" font-weight="700" fill="#FFFFFF" letter-spacing="-0.02em">Maklerauskunft</text>
+
+</svg>
