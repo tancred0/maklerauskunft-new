@@ -36,10 +36,10 @@ function Slider({
 			value={value}
 			{...props}
 		>
-			    <SliderPrimitive.Track className="relative h-3 md:h-4 w-full grow overflow-hidden rounded-full bg-gray-200">
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
+			    <SliderPrimitive.Track className="relative h-3 md:h-4 w-full grow overflow-hidden rounded-full bg-white/20">
+      <SliderPrimitive.Range className="absolute h-full bg-[var(--lp-blue)]" />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="relative flex items-center justify-center h-8 w-6 md:h-10 md:w-8 rounded-md bg-primary shadow-lg ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-90 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:shadow-xl">
+    <SliderPrimitive.Thumb className="relative flex items-center justify-center h-8 w-6 md:h-10 md:w-8 rounded-md bg-[var(--lp-blue)] shadow-lg ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-90 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:shadow-xl">
       <div className="flex items-center gap-0.5">
         <div className="w-0.5 h-4 md:h-5 bg-white rounded-full"></div>
         <div className="w-0.5 h-4 md:h-5 bg-white rounded-full"></div>

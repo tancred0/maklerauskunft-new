@@ -27,7 +27,7 @@ export const MaklerFunnelProvider = ({
 		data: {
 			track_funnel_version: "1.0",
 			track_funnel_type: FUNNEL_TYPES.MAKLEREMPFEHLUNG,
-			track_funnel_source: "Deutsche Maklerauskunft",
+			track_funnel_source: "Maklerauskunft",
 			track_environment: env.NEXT_PUBLIC_ENV,
 			...(initialUtmParams || {}),
 		},

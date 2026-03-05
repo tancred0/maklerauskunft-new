@@ -1,7 +1,5 @@
-import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import arrayLeftIcon from "@/images/funnel/arrayLeft.svg";
-import arrayRightIcon from "@/images/funnel/arrayRight.svg";
 import { cn } from "@/lib/utils";
 import { useMaklerFunnel } from "./makler-funnel-context";
 
@@ -35,38 +33,38 @@ export function BackAndForth({
 			{nextScreen && (
 				<button
 					className={cn(
-						"col-span-4 flex w-full justify-between rounded-lg p-3 text-white md:p-4",
-						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-primary hover:brightness-90",
+						"col-span-4 flex w-full items-center justify-between rounded-xl p-3 text-white md:p-4",
+						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-[var(--lp-blue)] hover:bg-[var(--lp-blue-light)]",
 					)}
 					disabled={disabled}
 					onClick={handleClick}
 				>
 					<span className="text-white">Weiter</span>
-					<Image alt="Weiter icon" className="brightness-0 invert" height={24} src={arrayRightIcon} width={24} />
+					<ChevronRight className="h-5 w-5" />
 				</button>
 			)}
 			{!nextScreen && (
 				<button
 					className={cn(
-						"col-span-4 flex w-full justify-between rounded-lg p-3 text-white md:p-4",
-						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-primary hover:brightness-90",
+						"col-span-4 flex w-full items-center justify-between rounded-xl p-3 text-white md:p-4",
+						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-[var(--lp-blue)] hover:bg-[var(--lp-blue-light)]",
 					)}
 					disabled={disabled}
 					type="submit"
 				>
 					<span className="text-white">Weiter</span>
-					<Image alt="Weiter icon" className="brightness-0 invert" height={24} src={arrayRightIcon} width={24} />
+					<ChevronRight className="h-5 w-5" />
 				</button>
 			)}
 			<button
 				className={cn(
-					"order-first rounded-lg p-3 md:p-4 transition-colors",
-					disabled ? "cursor-not-allowed bg-muted" : "bg-gray-200 hover:bg-gray-300",
+					"order-first rounded-xl p-3 md:p-4 transition-colors",
+					disabled ? "cursor-not-allowed bg-white/5" : "bg-white/[0.1] hover:bg-white/[0.15]",
 				)}
 				disabled={disabled}
 				onClick={() => goBack()}
 			>
-				<Image alt="Map icon" height={24} src={arrayLeftIcon} width={0} />
+				<ChevronLeft className="h-5 w-5 text-white/70" />
 			</button>
 		</div>
 	);
@@ -90,39 +88,39 @@ export function BackAndForthNew({
 			{nextScreen && (
 				<button
 					className={cn(
-						"flex w-full justify-between rounded-lg p-3 text-white md:p-4",
-						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-primary hover:brightness-90",
+						"flex w-full items-center justify-between rounded-xl p-3 text-white md:p-4",
+						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-[var(--lp-blue)] hover:bg-[var(--lp-blue-light)]",
 					)}
 					disabled={disabled}
 					onClick={handleClick}
 				>
 					<span className="text-white">Weiter</span>
-					<Image alt="Weiter icon" className="brightness-0 invert" height={24} src={arrayRightIcon} width={24} />
+					<ChevronRight className="h-5 w-5" />
 				</button>
 			)}
 			{!nextScreen && (
 				<button
 					className={cn(
-						"flex w-full justify-between rounded-lg p-3 text-white md:p-4",
-						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-primary hover:brightness-90",
+						"flex w-full items-center justify-between rounded-xl p-3 text-white md:p-4",
+						disabled ? "cursor-not-allowed bg-muted-foreground" : "bg-[var(--lp-blue)] hover:bg-[var(--lp-blue-light)]",
 					)}
 					disabled={disabled}
 					type="submit"
 				>
 					<span className="text-white">Weiter</span>
-					<Image alt="Weiter icon" className="brightness-0 invert" height={24} src={arrayRightIcon} width={24} />
+					<ChevronRight className="h-5 w-5" />
 				</button>
 			)}
 
 			<button
 				className={cn(
-					"order-first rounded-lg p-3 md:p-4 transition-colors",
-					disabled ? "cursor-not-allowed bg-muted" : "bg-gray-200 hover:bg-gray-300",
+					"order-first rounded-xl p-3 md:p-4 transition-colors",
+					disabled ? "cursor-not-allowed bg-white/5" : "bg-white/[0.1] hover:bg-white/[0.15]",
 				)}
 				disabled={disabled}
 				onClick={() => goBack()}
 			>
-				<Image alt="Map icon" height={24} src={arrayLeftIcon} width={0} />
+				<ChevronLeft className="h-5 w-5 text-white/70" />
 			</button>
 		</div>
 	);
@@ -133,10 +131,10 @@ export function OnlyBack() {
 	return (
 		<div className="flex justify-start">
 			<button
-				className="rounded-lg bg-gray-200 p-3 transition-colors hover:bg-gray-300 md:p-4"
+				className="rounded-xl bg-white/[0.1] p-3 transition-colors hover:bg-white/[0.15] md:p-4"
 				onClick={() => goBack()}
 			>
-				<Image alt="Map icon" height={24} src={arrayLeftIcon} width={0} />
+				<ChevronLeft className="h-5 w-5 text-white/70" />
 			</button>
 		</div>
 	);
@@ -148,10 +146,10 @@ export function OnlyBackNew() {
 	return (
 		<div className="grid grid-cols-[1fr_3fr] items-end gap-2 sm:gap-4">
 			<button
-				className="rounded-lg bg-gray-200 p-3 transition-colors hover:bg-gray-300 md:p-4"
+				className="rounded-xl bg-white/[0.1] p-3 transition-colors hover:bg-white/[0.15] md:p-4"
 				onClick={() => goBack()}
 			>
-				<Image alt="Map icon" height={24} src={arrayLeftIcon} width={0} />
+				<ChevronLeft className="h-5 w-5 text-white/70" />
 			</button>
 			<div></div>
 		</div>
@@ -174,7 +172,7 @@ export function OnlyForward({
 	return (
 		<div className={cn("mb-4", className)}>
 			<button
-				className="flex w-full items-center justify-center rounded-lg bg-primary p-3 text-white md:p-4"
+				className="flex w-full items-center justify-center rounded-xl bg-[var(--lp-blue)] p-3 text-white hover:bg-[var(--lp-blue-light)] md:p-4"
 				onClick={handleClick}
 			>
 				<span className="mr-2 font-medium">Weiter</span>

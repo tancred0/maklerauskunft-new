@@ -30,6 +30,8 @@ export interface MarketStat {
 export interface CityConfig {
   heroSubheading?: string;
   verkaeuferVermittelt: string;
+  rating: string;
+  reviewCount: string;
   marketStats: MarketStat[];
   featuredTestimonial: FeaturedTestimonial;
   testimonials: Testimonial[];

@@ -71,7 +71,7 @@ const MaklerFunnelRender = ({
 	// Step 0 (intro) and Step 5 (service not available) - special screens
 	if (data.step === 0 || data.step === 5) {
 		return (
-			<div className="rounded-2xl bg-white p-4 md:min-h-[670px] md:p-6">
+			<div className="rounded-2xl border border-white/[0.12] bg-white/[0.07] p-4 backdrop-blur-xl md:min-h-[670px] md:p-6">
 				<div key={data.step} className="animate-in fade-in duration-300">
 					{renderStep()}
 				</div>
@@ -82,7 +82,7 @@ const MaklerFunnelRender = ({
 	// Step 98 (UserInfoScreen) needs a wider container for the form
 	if (data.step === 98) {
 		return (
-			<div className="flex min-h-[674px] flex-col rounded-2xl bg-white p-4 md:min-h-[670px] md:min-w-[720px] md:p-10">
+			<div className="flex min-h-[674px] flex-col rounded-2xl border border-white/[0.12] bg-white/[0.07] p-4 backdrop-blur-xl md:min-h-[670px] md:min-w-[720px] md:p-10">
 				<div key={data.step} className="flex flex-1 flex-col animate-in fade-in duration-300">
 					{renderStep()}
 				</div>
@@ -92,7 +92,7 @@ const MaklerFunnelRender = ({
 
 	// All other steps - single clean card
 	return (
-		<div className="flex h-[674px] flex-col rounded-2xl bg-white p-4 md:h-[670px] md:p-10">
+		<div className="flex h-[674px] flex-col rounded-2xl border border-white/[0.12] bg-white/[0.07] p-4 backdrop-blur-xl md:h-[670px] md:p-10">
 			<div key={data.step} className="flex flex-1 flex-col animate-in fade-in duration-300">
 				{renderStep()}
 			</div>
@@ -110,7 +110,7 @@ export function MaklerFunnelContent({
 	className?: string;
 }) {
 	return (
-		<div className={className} id="funnel">
+		<div className={`font-body ${className}`} id="funnel">
 			<Script
 				async
 				defer

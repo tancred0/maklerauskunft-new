@@ -2,6 +2,8 @@ import type { CityConfig } from "./types";
 
 export const berlinConfig: CityConfig = {
   verkaeuferVermittelt: "800+",
+  rating: "4.8",
+  reviewCount: "2.347",
   marketStats: [
     {
       value: "+14%",
@@ -45,14 +47,6 @@ export const berlinConfig: CityConfig = {
       propertyType: "Mehrfamilienhaus",
       review:
         "Sehr zufrieden mit dem Service. Drei qualifizierte Maklervorschläge erhalten und den perfekten Partner für mein Mehrfamilienhaus gefunden.",
-    },
-    {
-      name: "Sandra K.",
-      location: "Berlin-Kreuzberg",
-      rating: 5,
-      propertyType: "Wohnung",
-      review:
-        "Als Erstkäuferin war ich unsicher. Der vermittelte Makler hat mich durch den gesamten Prozess begleitet und meine Traumwohnung gefunden.",
     },
   ],
 };

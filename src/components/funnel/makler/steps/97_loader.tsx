@@ -1,8 +1,5 @@
 import { Check } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import iconLong from "@/images/general/logo_wide_black_font.svg";
-import { Trust } from "../../trust";
 import { useMaklerFunnel } from "../makler-funnel-context";
 
 interface CheckItem {
@@ -33,7 +30,7 @@ const getInitialChecks = (): CheckItem[] => {
 // Component for the header section
 const HeaderSection = ({ heading }: { heading: string }) => (
 	<div className="mb-4 space-y-4 md:mb-10">
-		<h2 className="text-xl font-semibold text-primary md:text-2xl text-center">{heading}</h2>
+		<h2 className="font-display text-xl font-bold text-white md:text-2xl text-center">{heading}</h2>
 	</div>
 );
 
@@ -42,7 +39,7 @@ const MainSpinner = ({ allCompleted }: { allCompleted: boolean }) => (
 	<div className="flex items-center pt-6 md:pb-10">
 		<div className="mx-auto h-24 w-24">
 			{allCompleted ? (
-				<Check className="h-24 w-24 text-primary" />
+				<Check className="h-24 w-24 text-[var(--lp-blue-light)]" />
 			) : (
 				<svg className="h-24 w-24 animate-spin" viewBox="0 0 24 24">
 					<circle
@@ -60,7 +57,7 @@ const MainSpinner = ({ allCompleted }: { allCompleted: boolean }) => (
 						cy="12"
 						fill="none"
 						r="10"
-						stroke="#0f3b6b"
+						stroke="var(--lp-blue)"
 						strokeDasharray="32.5 22.5"
 						strokeWidth="2"
 					/>
@@ -85,10 +82,10 @@ const CheckList = ({ checks }: { checks: CheckItem[] }) => (
 const CheckItemComponent = ({ check }: { check: CheckItem }) => (
 	<div
 		className={`flex items-center justify-between rounded-lg px-4 py-3 ${
-			check.value || check.isRunning ? "bg-primary/10" : ""
+			check.value || check.isRunning ? "bg-white/[0.08]" : ""
 		}`}
 	>
-		<span className="text-primary">{check.label}</span>
+		<span className="text-white/80">{check.label}</span>
 		<CheckStatus check={check} />
 	</div>
 );
@@ -97,7 +94,7 @@ const CheckItemComponent = ({ check }: { check: CheckItem }) => (
 const CheckStatus = ({ check }: { check: CheckItem }) => (
 	<div className="flex items-center">
 		{check.value ? (
-			<Check className="h-6 w-6 text-primary" />
+			<Check className="h-6 w-6 text-[var(--lp-blue-light)]" />
 		) : check.isRunning ? (
 			<SmallSpinner />
 		) : null}
@@ -123,7 +120,7 @@ const SmallSpinner = () => (
 				cy="12"
 				fill="none"
 				r="10"
-				stroke="#0f3b6b"
+				stroke="var(--lp-blue)"
 				strokeDasharray="32.5 22.5"
 				strokeWidth="2"
 			/>
@@ -215,16 +212,7 @@ export default function LoaderScreen() {
 				<CheckList checks={checks} />
 			</div>
 
-			<div className="mt-auto space-y-4 w-full max-w-4xl mx-auto">
-				<div className="flex justify-center">
-					<Image
-						alt="Logo Maklerauskunft Deutschland 2026 - Wide"
-						src={iconLong}
-						width={185}
-					/>
-				</div>
-				<Trust />
-			</div>
+			<div className="mt-auto w-full max-w-4xl mx-auto" />
 		</>
 	);
 }

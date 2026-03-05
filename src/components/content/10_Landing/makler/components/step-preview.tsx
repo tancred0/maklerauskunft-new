@@ -10,15 +10,15 @@ export function StepPreview() {
       {steps.map((step, index) => (
         <div key={step.number} className="flex items-center gap-2 md:gap-4">
           <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">
+            <div className="flex size-8 items-center justify-center rounded-full bg-[var(--lp-blue)] text-sm font-semibold text-white">
               {step.number}
             </div>
-            <span className="hidden text-sm font-medium text-primary md:inline">
+            <span className="hidden text-sm font-medium text-white/80 md:inline">
               {step.label}
             </span>
           </div>
           {index < steps.length - 1 && (
-            <div className="h-px w-4 bg-gray-300 md:w-8" />
+            <div className="h-px w-4 bg-white/20 md:w-8" />
           )}
         </div>
       ))}

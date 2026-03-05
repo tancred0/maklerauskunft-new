@@ -3,6 +3,7 @@ export { FinalCta } from "./final-cta";
 export { HeroSection } from "./hero-section";
 export { HowItWorks } from "./how-it-works";
 export { KpiStrip } from "./kpi-strip";
+export { LpFaqSection } from "./lp-faq-section";
 export { MarketContext } from "./market-context";
 export { MicroTrust } from "./micro-trust";
 export { StepPreview } from "./step-preview";

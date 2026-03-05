@@ -2,6 +2,8 @@ import type { CityConfig } from "./types";
 
 export const hamburgConfig: CityConfig = {
   verkaeuferVermittelt: "450+",
+  rating: "4.8",
+  reviewCount: "2.347",
   marketStats: [
     {
       value: "+11%",

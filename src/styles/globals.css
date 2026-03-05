@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+	--font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+	--font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 	--font-sans:
 		var(--font-inter), ui-sans-serif, system-ui, sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -128,6 +130,27 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Landing page: hide funnel's built-in authority badge & micro-trust (hero already has these) */
+.lp-theme .funnel-authority-badge,
+.lp-theme .funnel-micro-trust {
+	display: none;
+}
+
+/* Landing page design tokens */
+.lp-theme {
+	--lp-navy: #0d1b2a;
+	--lp-navy-mid: #1a2f45;
+	--lp-blue: #1a5cff;
+	--lp-blue-light: #3b7aff;
+	--lp-gold: #f0b429;
+	--lp-gold-light: #ffd166;
+	--lp-gray: #8a97aa;
+	--lp-off-white: #f5f7fa;
+	--lp-gray-light: #e8ecf2;
+	--lp-green: #22c55e;
+	--lp-text: #1a2535;
 }
 
 @layer base {

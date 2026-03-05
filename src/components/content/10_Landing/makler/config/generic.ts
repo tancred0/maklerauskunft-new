@@ -2,6 +2,8 @@ import type { CityConfig } from "./types";
 
 export const genericConfig: CityConfig = {
   verkaeuferVermittelt: "5.000+",
+  rating: "4.8",
+  reviewCount: "2.347",
   marketStats: [
     {
       value: "+12%",

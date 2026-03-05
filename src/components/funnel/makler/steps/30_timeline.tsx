@@ -73,7 +73,7 @@ export default function TimelineScreen() {
 		<>
 			<div className="mb-4 space-y-4 md:mb-10 w-full max-w-4xl mx-auto">
 				<StepsComponent currentStep={1} />
-				<h2 className="text-center text-xl font-semibold text-primary md:text-2xl">{heading}</h2>
+				<h2 className="text-center font-display text-xl font-bold text-white md:text-2xl">{heading}</h2>
 			</div>
 
 			<div className="md:hidden w-full max-w-4xl mx-auto">

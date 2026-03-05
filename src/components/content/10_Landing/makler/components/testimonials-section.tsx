@@ -1,50 +1,73 @@
-import { MainContainer } from "@/components/layout/main-container";
-import { StarRating } from "@/components/home/star-rating";
-import { ReviewCard } from "@/components/home/review-card";
-import type { Testimonial } from "../config";
+"use client";
+
+import type { Testimonial, FeaturedTestimonial as FeaturedTestimonialType } from "../config";
+import { FeaturedTestimonial } from "./featured-testimonial";
 
 interface TestimonialsSectionProps {
   reviews: Testimonial[];
+  featuredTestimonial: FeaturedTestimonialType;
+  locationName: string;
 }
 
-export function TestimonialsSection({ reviews }: TestimonialsSectionProps) {
+export function TestimonialsSection({ reviews, featuredTestimonial, locationName }: TestimonialsSectionProps) {
+  const scrollToFunnel = () => {
+    document.getElementById("funnel")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
-      <MainContainer>
+    <section className="py-14">
+      <div className="mx-auto max-w-3xl px-4 md:px-10">
         {/* Section header */}
-        <div className="mx-auto mb-12 max-w-4xl text-center md:mb-16">
-          <h2 className="mb-8 text-2xl font-bold leading-tight text-primary md:text-3xl lg:text-4xl">
-            Was unsere Kunden sagen
-          </h2>
-
-          {/* Overall rating */}
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center gap-3">
-              <StarRating rating={4.8} size="lg" />
-              <span className="text-3xl font-bold text-primary md:text-4xl">
-                4.8/5
-              </span>
-            </div>
-            <p className="text-muted-foreground">
-              Durchschnitt von 2.000+ Kundenbewertungen
-            </p>
-          </div>
+        <div className="mb-2 text-xs font-semibold uppercase tracking-[1.5px] text-[var(--lp-blue)]">
+          Echte Ergebnisse aus {locationName}
         </div>
+        <h2 className="mb-8 font-display text-[clamp(22px,4vw,32px)] font-extrabold leading-[1.2] text-[var(--lp-navy)]">
+          Was Verkäufer mit unserem Service erreicht haben
+        </h2>
 
-        {/* Review cards grid */}
-        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-          {reviews.map((review) => (
-            <ReviewCard
+        {/* Featured testimonial */}
+        <FeaturedTestimonial testimonial={featuredTestimonial} />
+
+        {/* Grid testimonials */}
+        <div className="mb-9 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.slice(0, 4).map((review) => (
+            <div
               key={review.name}
-              name={review.name}
-              location={review.location}
-              rating={review.rating}
-              review={review.review}
-              propertyType={review.propertyType}
-            />
+              className="rounded-xl border border-[var(--lp-gray-light)] bg-white p-5 transition-shadow hover:shadow-[0_4px_24px_rgba(13,27,42,0.10)]"
+            >
+              <div className="mb-2 text-xs tracking-tight text-[var(--lp-gold)]">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </div>
+              <p className="mb-3 text-sm leading-relaxed text-[#4a5568]">
+                &bdquo;{review.review}&ldquo;
+              </p>
+              <div className="text-xs text-[var(--lp-gray)]">
+                <strong className="block text-[var(--lp-text)]">{review.name}</strong>
+                {review.location}
+                {review.propertyType && ` · ${review.propertyType}`}
+              </div>
+            </div>
           ))}
         </div>
-      </MainContainer>
+
+        {/* Mid CTA */}
+        <div
+          className="rounded-[20px] border border-[var(--lp-gray-light)] p-7 text-center"
+          style={{ background: "var(--lp-off-white)" }}
+        >
+          <p className="mb-4 text-[15px] text-[var(--lp-gray)]">
+            <strong className="text-[var(--lp-text)]">Jetzt ist ein guter Zeitpunkt in {locationName}.</strong>
+            <br />
+            Der Markt ist aktiv – finden Sie den Makler, der das Maximum herausholt.
+          </p>
+          <button
+            onClick={scrollToFunnel}
+            className="inline-flex items-center gap-2 rounded-xl bg-[var(--lp-blue)] px-7 py-3.5 font-display text-[15px] font-bold text-white shadow-[0_4px_16px_rgba(26,92,255,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[var(--lp-blue-light)] hover:shadow-[0_8px_24px_rgba(26,92,255,0.38)]"
+          >
+            Jetzt meinen Makler in {locationName} finden &rarr;
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

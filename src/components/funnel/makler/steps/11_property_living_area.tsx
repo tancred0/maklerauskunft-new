@@ -64,16 +64,16 @@ export default function PropertyLivingAreaScreen() {
 		<>
 			<div className="mb-4 space-y-4 md:mb-10 w-full max-w-4xl mx-auto">
 				<StepsComponent currentStep={1} />
-				<h2 className="text-center text-xl font-semibold text-primary md:text-2xl">{heading}</h2>
+				<h2 className="text-center font-display text-xl font-bold text-white md:text-2xl">{heading}</h2>
 			</div>
 			<div className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center">
 				{/* Large centered value display */}
 				<div className="mb-8 text-center">
-					<div className="inline-flex items-baseline gap-2 rounded-lg bg-primary/10 px-6 py-3">
-						<span className="font-bold text-4xl text-primary">
+					<div className="inline-flex items-baseline gap-2 rounded-xl bg-white/[0.1] px-6 py-3">
+						<span className="font-bold text-4xl text-white">
 							{flaeche[0]!.toLocaleString("de-DE")}
 						</span>
-						<span className="text-primary text-xl">{unitType}</span>
+						<span className="text-white text-xl">{unitType}</span>
 					</div>
 				</div>
 
@@ -102,7 +102,7 @@ export default function PropertyLivingAreaScreen() {
 						step={5}
 						value={flaeche}
 					/>
-					<div className="flex justify-between text-muted-foreground text-sm">
+					<div className="flex justify-between text-white/50 text-sm">
 						<span>
 							{minValue.toLocaleString("de-DE")} {unitTypeSingular}
 						</span>
@@ -115,10 +115,10 @@ export default function PropertyLivingAreaScreen() {
 				{/* Alternative input */}
 				<div className="mb-8">
 					<div className="flex items-center justify-center gap-4">
-						<span className="text-muted-foreground">Manuelle Eingabe:</span>
+						<span className="text-white/50">Manuelle Eingabe:</span>
 						<div className="flex items-center gap-2">
 							<Input
-								className="w-24 border-border text-center focus:border-primary"
+								className="w-24 border-white/[0.15] bg-white/[0.1] text-center text-white placeholder:text-white/40 focus:border-white/30"
 								max={100000}
 								min={minValue}
 								onChange={(e) => {
@@ -145,7 +145,7 @@ export default function PropertyLivingAreaScreen() {
 								type="number"
 								value={flaeche[0] || ""}
 							/>
-							<span className="text-muted-foreground">{unitType}</span>
+							<span className="text-white/50">{unitType}</span>
 						</div>
 					</div>
 				</div>

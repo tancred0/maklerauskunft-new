@@ -1,10 +1,7 @@
 "use client";
 
 import { Home, ArrowLeft } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import iconLong from "@/images/general/logo_wide_black_font.svg";
 import { useMaklerFunnel } from "../makler-funnel-context";
 
 export default function ServiceNotAvailableScreen() {
@@ -18,16 +15,16 @@ export default function ServiceNotAvailableScreen() {
 		<div className="flex flex-col items-center p-2 md:p-4 w-full max-w-4xl mx-auto">
 			{/* Header */}
 			<div className="mb-8 w-full max-w-3xl space-y-4 text-center">
-				<div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-					<Home className="h-8 w-8 text-primary" />
+				<div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/[0.1]">
+					<Home className="h-8 w-8 text-[var(--lp-blue-light)]" />
 				</div>
-				<div className="text-2xl font-bold text-primary md:text-3xl">
+				<div className="font-display text-2xl font-bold text-white md:text-3xl">
 					Leider können wir Ihnen bei der {serviceType} nicht helfen
 				</div>
-				<p className="text-base text-muted-foreground md:text-lg">
-					Unser Service konzentriert sich aktuell auf die Vermittlung von optimalen Maklern für den <strong>Immobilienverkauf</strong>.
+				<p className="text-base text-white/60 md:text-lg">
+					Unser Service konzentriert sich aktuell auf die Vermittlung von optimalen Maklern für den <strong className="text-white/80">Immobilienverkauf</strong>.
 				</p>
-				<p className="text-base text-muted-foreground md:text-lg">
+				<p className="text-base text-white/60 md:text-lg">
 					Wir arbeiten daran, unser Angebot zu erweitern. Schauen Sie gerne zu einem später wieder vorbei!
 				</p>
 			</div>
@@ -37,28 +34,11 @@ export default function ServiceNotAvailableScreen() {
 				<Button
 					onClick={() => goBack()}
 					variant="outline"
-					className="flex items-center justify-center gap-2 py-6"
+					className="flex items-center justify-center gap-2 border-white/[0.15] bg-white/[0.08] py-6 text-white hover:bg-white/[0.14]"
 				>
 					<ArrowLeft className="h-5 w-5" />
 					Zurück zur Auswahl
 				</Button>
-				{/* <Link href="/" className="w-full">
-					<Button
-						variant="default"
-						className="w-full py-6"
-					>
-						Zur Startseite
-					</Button>
-				</Link> */}
-			</div>
-
-			<div className="mb-6">
-				<Image
-					alt="Maklerauskunft Deutschland"
-					src={iconLong}
-					width={200}
-					height={40}
-				/>
 			</div>
 		</div>
 	);

@@ -65,11 +65,11 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
 		render={({ field, fieldState }) => (
 			<FormItem className="grid grid-cols-1 md:grid-cols-[1fr_3fr] md:items-center gap-1 md:gap-4 mb-4 md:mb-6">
 				<FormLabel
-					className="text-primary text-small md:text-base"
+					className="text-white/80 text-small md:text-base"
 					htmlFor={name}
 				>
 					{label}
-					{required && <span className="text-red-500 ml-1">*</span>}
+					{required && <span className="text-red-400 ml-1">*</span>}
 				</FormLabel>
 				<div className="flex flex-col gap-1">
 					<FormControl>
@@ -78,13 +78,13 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
 							{...field}
 							className={
 								fieldState.error
-									? "h-10 border-2 border-red-500 md:h-12"
-									: "h-10 md:h-12"
+									? "h-10 border-2 border-red-400 bg-white/[0.1] text-white placeholder:text-white/40 md:h-12"
+									: "h-10 border-white/[0.15] bg-white/[0.1] text-white placeholder:text-white/40 md:h-12"
 							}
 						/>
 					</FormControl>
 					{fieldState.error && (
-						<span className="text-red-500 text-sm">{fieldState.error.message}</span>
+						<span className="text-red-400 text-sm">{fieldState.error.message}</span>
 					)}
 				</div>
 			</FormItem>
@@ -213,7 +213,7 @@ export default function LocationScreen() {
 		<>
 			<div className="mb-4 space-y-4 md:mb-10 w-full max-w-4xl mx-auto">
 				<StepsComponent currentStep={1} />
-				<h2 className="text-center text-xl font-semibold text-primary md:text-2xl">{heading}</h2>
+				<h2 className="text-center font-display text-xl font-bold text-white md:text-2xl">{heading}</h2>
 			</div>
 			<Form {...form}>
 				<form

@@ -21,8 +21,8 @@ function StepNumber({
 		<div
 			className={`flex flex-shrink-0 items-center justify-center rounded-full font-semibold ${size === "base" ? "h-10 w-10 text-base" : "h-8 w-8 text-sm"} ${
 				active
-					? "bg-primary text-primary-foreground"
-					: "border-2 border-primary/30 bg-white text-primary/50"
+					? "bg-[var(--lp-blue)] text-white"
+					: "border border-white/25 bg-transparent text-white/50"
 			}`}
 		>
 			{number}
@@ -31,7 +31,7 @@ function StepNumber({
 }
 
 const Separator = () => {
-	return <div className="h-0.5 w-8 bg-primary/20 md:w-12" />;
+	return <div className="h-0.5 w-8 bg-white/20 md:w-12" />;
 };
 
 const StepsComponent = ({
@@ -46,7 +46,7 @@ const StepsComponent = ({
 	return (
 		<div className="mx-auto flex flex-col items-center gap-2">
 			{/* Current step label */}
-			<p className="text-sm font-medium text-primary">{currentLabel}</p>
+			<p className="text-sm font-medium text-white/70">{currentLabel}</p>
 
 			{/* Step indicators */}
 			<div className="flex items-center gap-3">

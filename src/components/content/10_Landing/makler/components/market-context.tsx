@@ -1,8 +1,4 @@
-import { MainContainer } from "@/components/layout/main-container";
-import { TrendingUp, Clock, BadgeCheck, type LucideIcon } from "lucide-react";
 import type { MarketStat } from "../config";
-
-const iconMap: LucideIcon[] = [TrendingUp, BadgeCheck, Clock];
 
 interface MarketContextProps {
   stats: MarketStat[];
@@ -11,43 +7,46 @@ interface MarketContextProps {
 
 export function MarketContext({ stats, locationName }: MarketContextProps) {
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
-      <MainContainer>
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-4 text-center text-2xl font-bold text-primary md:text-3xl">
-            Warum ein Makler in {locationName} den Unterschied macht
-          </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
-            Aktuelle Marktdaten zeigen: Mit dem richtigen Makler erzielen
-            Verkäufer in {locationName} bessere Ergebnisse.
-          </p>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {stats.map((stat, i) => {
-              const Icon = iconMap[i % iconMap.length]!;
-              return (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
-                >
-                  <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-primary/10">
-                    <Icon className="size-6 text-primary" />
-                  </div>
-                  <div className="mb-1 text-3xl font-bold text-primary">
-                    {stat.value}
-                  </div>
-                  <div className="mb-2 font-semibold text-primary">
-                    {stat.label}
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {stat.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+    <section
+      className="border-y py-11"
+      style={{
+        background: "linear-gradient(135deg, #f8faff 0%, #eef2ff 100%)",
+        borderColor: "#dde4ff",
+      }}
+    >
+      <div className="mx-auto max-w-3xl px-4 md:px-10">
+        <div className="mb-2 text-xs font-semibold uppercase tracking-[1.5px] text-[var(--lp-blue)]">
+          Immobilienmarkt {locationName} 2026
         </div>
-      </MainContainer>
+        <h2 className="mb-2 font-display text-[clamp(22px,4vw,32px)] font-extrabold leading-[1.2] text-[var(--lp-navy)]">
+          Der Markt ist aktiv –
+          <br className="hidden sm:block" />
+          der richtige Makler macht den Unterschied
+        </h2>
+        <p className="mb-6 text-sm text-[var(--lp-gray)]">
+          Mit einem erfahrenen Makler erzielen Verkäufer in {locationName} im Schnitt deutlich bessere Ergebnisse als ohne Vermittlung.
+        </p>
+
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-xl bg-white p-4.5 text-center shadow-[0_4px_24px_rgba(13,27,42,0.10)]"
+            >
+              <div className="mb-1 font-display text-[22px] font-extrabold leading-none text-[var(--lp-blue)]">
+                {stat.value}
+              </div>
+              <div className="text-xs leading-snug text-[var(--lp-gray)]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-4 text-center text-xs text-[var(--lp-gray)]">
+          * Basierend auf internen Vermittlungsdaten 2024–2025
+        </p>
+      </div>
     </section>
   );
 }

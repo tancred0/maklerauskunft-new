@@ -29,12 +29,12 @@ export function Trust() {
 				<div className="flex items-center gap-2 md:gap-3" key={icon.alt}>
 					<Image
 						alt={icon.alt}
-						className="h-5 w-5 md:h-6 md:w-6"
+						className="h-5 w-5 brightness-0 invert opacity-70 md:h-6 md:w-6"
 						height={24}
 						src={icon.icon}
 						width={24}
 					/>
-					<span className="hyphens-none font-medium text-primary text-xs md:text-sm">
+					<span className="hyphens-none font-medium text-white/70 text-xs md:text-sm">
 						{icon.text}
 					</span>
 				</div>

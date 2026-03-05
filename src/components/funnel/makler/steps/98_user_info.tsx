@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, FileText, Lock } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { type Control, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -21,7 +20,6 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import capitalizeWords from "@/components/utils/capitalizeWords";
 import verifyPhoneNumberGoogle from "@/components/utils/phoneNumber/verifyPhoneNumberGoogle";
-import iconLong from "@/images/general/logo_wide_black_font.svg";
 import { uploadLead } from "@/server/actions/lead-upload";
 import StepsComponent from "../../steps-component";
 import { Trust } from "../../trust";
@@ -83,11 +81,11 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
 			return (
 				<FormItem className="grid grid-cols-1 md:grid-cols-[1fr_3fr] md:items-center gap-1 md:gap-4 mb-2 md:mb-4">
 					<FormLabel
-						className="text-primary text-small md:text-base"
+						className="text-white/80 text-small md:text-base"
 						htmlFor={name}
 					>
 						{label}
-						{required && <span className="text-red-500 ml-1">*</span>}
+						{required && <span className="text-red-400 ml-1">*</span>}
 					</FormLabel>
 					<div className="flex flex-col gap-1">
 						<FormControl>
@@ -96,8 +94,8 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
 								{...field}
 								className={
 									displayError
-										? "h-10 border-2 border-red-500 md:h-12"
-										: "h-10 md:h-12"
+										? "h-10 border-2 border-red-400 bg-white/[0.1] text-white placeholder:text-white/40 md:h-12"
+										: "h-10 border-white/[0.15] bg-white/[0.1] text-white placeholder:text-white/40 md:h-12"
 								}
 								onChange={(e) => {
 									field.onChange(e);
@@ -108,7 +106,7 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
 							/>
 						</FormControl>
 						{displayError && (
-							<span className="text-red-500 text-sm">{errorMessage}</span>
+							<span className="text-red-400 text-sm">{errorMessage}</span>
 						)}
 					</div>
 				</FormItem>
@@ -125,9 +123,9 @@ const GenderFieldComponent: React.FC<{ control: Control<FormData> }> = ({
 		name="user_salutation"
 		render={({ field }) => (
 			<FormItem className="grid grid-cols-1 md:grid-cols-[1fr_3fr] md:items-center gap-1 md:gap-4 pb-4 md:pb-6">
-				<FormLabel className="text-primary text-small md:text-base">
+				<FormLabel className="text-white/80 text-small md:text-base">
 					Anrede
-					<span className="text-red-500 ml-1">*</span>
+					<span className="text-red-400 ml-1">*</span>
 				</FormLabel>
 				<FormControl>
 					<RadioGroup
@@ -136,12 +134,12 @@ const GenderFieldComponent: React.FC<{ control: Control<FormData> }> = ({
 						onValueChange={field.onChange}
 					>
 						<div className="flex items-center gap-2">
-							<RadioGroupItem value="Herr" />
-							<label className="text-primary">Herr</label>
+							<RadioGroupItem value="Herr" className="border-white/30 text-white data-[state=checked]:border-[var(--lp-blue)]" />
+							<label className="text-white/80">Herr</label>
 						</div>
 						<div className="flex items-center gap-2">
-							<RadioGroupItem value="Frau" />
-							<label className="text-primary">Frau</label>
+							<RadioGroupItem value="Frau" className="border-white/30 text-white data-[state=checked]:border-[var(--lp-blue)]" />
+							<label className="text-white/80">Frau</label>
 						</div>
 					</RadioGroup>
 				</FormControl>
@@ -313,8 +311,8 @@ export default function UserInfoScreen() {
 				<div className="mb-4">
 					<StepsComponent currentStep={2} size="small" />
 				</div>
-				<h2 className="text-xl font-semibold text-primary md:text-2xl text-center">{heading}</h2>
-				<div className="mt-2 hyphens-auto text-center text-base text-muted-foreground" lang="de">
+				<h2 className="font-display text-xl font-bold text-white md:text-2xl text-center">{heading}</h2>
+				<div className="mt-2 hyphens-auto text-center text-base text-white/60" lang="de">
 					Bitte geben Sie Ihre Kontaktdaten ein, damit wir Ihnen die passenden Makler zuschicken können.
 				</div>
 			</div>
@@ -370,17 +368,10 @@ export default function UserInfoScreen() {
 						</div>
 					</div>
 					<div className="mx-auto mt-2">
-						<Image
-							alt="Logo Maklerauskunft Deutschland 2026 - Wide"
-							src={iconLong}
-							height={32}
-						/>
-					</div>
-					<div className="mx-auto mt-2">
 						<Trust />
 					</div>
 					<div className="mx-auto mt-4 text-center">
-						<p className="text-gray-400 text-xs">
+						<p className="text-white/40 text-xs">
 							Hinweis: Die Makler-Empfehlung ist kostenlos und unverbindlich.
 						</p>
 					</div>

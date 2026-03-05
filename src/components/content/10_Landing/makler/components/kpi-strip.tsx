@@ -1,5 +1,3 @@
-import { MainContainer } from "@/components/layout/main-container";
-import { Clock, Users, Building2 } from "lucide-react";
 import type { CityConfig } from "../config";
 
 interface KpiStripProps {
@@ -9,39 +7,37 @@ interface KpiStripProps {
 
 export function KpiStrip({ config, locationName }: KpiStripProps) {
   const kpis = [
-    {
-      icon: Building2,
-      value: "20.000+",
-      label: "Makler",
-    },
-    {
-      icon: Users,
-      value: config.verkaeuferVermittelt,
-      label: `Verkäufer in ${locationName} vermittelt`,
-    },
-    {
-      icon: Clock,
-      value: "2 Min.",
-      label: "bis zur Empfehlung",
-    },
+    { value: "20.000+", label: "geprüfte Makler\nin Deutschland" },
+    { value: config.verkaeuferVermittelt, label: `Verkäufer in ${locationName}\nerfolgreich vermittelt` },
+    { value: "2 Min.", label: "Ø Zeit bis zur\nersten Empfehlung" },
+    { value: `${config.rating}★`, label: `Ø Bewertung\naus ${config.reviewCount} Reviews` },
   ];
 
   return (
-    <section className="bg-gradient-to-r from-primary to-primary/80 py-8">
-      <MainContainer>
-        <div className="grid grid-cols-3 gap-4 md:gap-8">
-          {kpis.map((kpi) => (
-            <div
-              key={kpi.label}
-              className="flex flex-col items-center gap-1.5 text-center"
-            >
-              <kpi.icon className="size-6 text-white/90" />
-              <span className="text-2xl font-bold text-white">{kpi.value}</span>
-              <span className="text-sm text-white/80">{kpi.label}</span>
+    <section
+      className="border-b py-7"
+      style={{ background: "var(--lp-off-white)", borderColor: "var(--lp-gray-light)" }}
+    >
+      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-around gap-4 px-4 md:px-10">
+        {kpis.map((kpi, i) => (
+          <div key={kpi.label} className="flex items-center gap-4">
+            <div className="text-center">
+              <div className="font-display text-[26px] font-extrabold leading-none text-[var(--lp-navy)]">
+                {kpi.value}
+              </div>
+              <div className="mt-1 whitespace-pre-line text-xs text-[var(--lp-gray)]">
+                {kpi.label}
+              </div>
             </div>
-          ))}
-        </div>
-      </MainContainer>
+            {i < kpis.length - 1 && (
+              <div
+                className="hidden h-10 w-px md:block"
+                style={{ background: "var(--lp-gray-light)" }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

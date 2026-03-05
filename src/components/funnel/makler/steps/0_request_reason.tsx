@@ -1,7 +1,6 @@
 "use client";
 
-import { Building, Check, HandCoins, Home, Key, ShieldCheck } from "lucide-react";
-import Image from "next/image";
+import { Building, Check, HandCoins, Home, Key } from "lucide-react";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,7 +8,6 @@ import useRudderStackAnalytics from "@/app/useRudderAnalytics";
 import StepsComponent from "@/components/funnel/steps-component";
 import { generateTransactionNumber } from "@/components/utils/generateTransactionNumber";
 import getGAUserId from "@/components/utils/getGAUserId";
-import iconLong from "@/images/general/logo_wide_black_font.svg";
 import { storage } from "@/lib/storage";
 import { FunnelButtonLarge } from "../makler-funnel-button";
 import { useMaklerFunnel } from "../makler-funnel-context";
@@ -21,8 +19,8 @@ function MicroTrust() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
       {items.map((item) => (
-        <div key={item} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <Check className="size-4 text-green-600" />
+        <div key={item} className="flex items-center gap-1.5 text-sm text-white/60">
+          <Check className="size-4 text-emerald-400" />
           <span>{item}</span>
         </div>
       ))}
@@ -154,7 +152,7 @@ export default function RequestReasonScreen({
 
       {/* Header */}
       <div className="mb-8 w-full max-w-3xl text-center">
-        <div className="text-2xl font-bold text-primary md:text-3xl">{heading}</div>
+        <div className="font-display text-2xl font-bold text-white md:text-3xl">{heading}</div>
       </div>
 
       {/* Request Reason Buttons */}
@@ -172,19 +170,10 @@ export default function RequestReasonScreen({
         ))}
       </div>
 
-      {/* Authority Badge */}
-      <div className="mb-2 flex items-center gap-2.5">
-        <ShieldCheck className="size-5 text-primary" />
-        <Image
-          alt="Deutsche Maklerauskunft"
-          src={iconLong}
-          width={180}
-          height={36}
-        />
-      </div>
-
       {/* Trust Badges */}
-      <MicroTrust />
+      <div className="funnel-micro-trust">
+        <MicroTrust />
+      </div>
     </div>
   );
 }

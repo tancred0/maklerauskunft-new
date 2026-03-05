@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immobilienmakler Berlin 2026 | Jetzt kostenlos den besten Makler finden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2f45;
+    --blue: #1a5cff;
+    --blue-light: #3b7aff;
+    --gold: #f0b429;
+    --gold-light: #ffd166;
+    --white: #ffffff;
+    --off-white: #f5f7fa;
+    --gray-light: #e8ecf2;
+    --gray: #8a97aa;
+    --text: #1a2535;
+    --green: #22c55e;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --shadow-lg: 0 12px 48px rgba(13,27,42,0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--navy);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--white);
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-trust {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-trust strong { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 60%, #1e3a5f 100%);
+    padding: 52px 24px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top:  width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,92,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -40px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(240,180,41,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .trust-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 7px 16px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.9);
+    animation: fadeDown 0.5s ease both;
+  }
+  .stars { color: var(--gold); letter-spacing: -1px; }
+  .trust-bar .sep { color: rgba(255,255,255,0.3); }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 5.5vw, 44px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 16px;
+    animation: fadeDown 0.55s 0.08s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 36px;
+    max-width: 480px;
+    animation: fadeDown 0.55s 0.14s ease both;
+    font-weight: 300;
+  }
+
+  /* ─── STEP PREVIEW ─── */
+  .step-preview {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 32px;
+    animation: fadeDown 0.55s 0.20s ease both;
+  }
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.80);
+  }
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-arrow {
+    color: rgba(255,255,255margin: 0 8px;
+    font-size: 12px;
+  }
+
+  /* ─── CTA BUTTONS ─── */
+  .cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+    animation: fadeDown 0.55s 0.26s ease both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    padding: 16px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(240,180,41,0.35);
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(240,180,41,0.45);
+  }
+  .btn-primary .arrow { font-size: 18px; transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(3px); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.75);
+    border: ba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.14);
+    color: white;
+  }
+
+  .micro-trust {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    animation: fadeDown 0.55s 0.30s ease both;
+  }
+  .micro-trust span { display: flex; align-items: center; gap: 5px; }
+  .micro-trust .check { color: var(--green); }
+
+  /* ─── TRUST BADGES ─── */
+  .badges-section {
+    background: var(--off-white);
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .badges-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    text-align: center;
+  }
+  .badge-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+     800;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .badge-label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 3px;
+  }
+  .badge-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--gray-light);
+  }
+
+  /* ─── SOCIAL PROOF HERO ─── */
+  .social-proof {
+    padding: 56px 24px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  .testimonial-featured {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a60 100%);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-featured::before {
+    content: '🏆';
+    pute;
+    top: -10px; right: 16px;
+    font-size: 48px;
+    opacity: 0.12;
+  }
+  .featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(240,180,41,0.15);
+    border: 1px solid rgba(240,180,41,0.3);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .featured-quote {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .featured-quote strong { color: var(--gold); }
+  .featured-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .featured-author { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .featured-author strong { color: white; display: block; font-size: 14px; }
+  .featured-stats {
+    display: flex;
+    gap: 16px;
+  }
+  .feat-stat {
+    text-align: right;
+  }
+  .feat-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .feat-stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .testimonial-card {
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow); }
+  .t-stars { color: var(--gold); font-size: 12px; margin-bottom: 8px; }
+  .t-quote { font-size: 14px; color: #4a5568; line-height: 1.55; margin-bottom: 12px; }
+  .t-author { font-size: 12px; color: var(--gray); }
+  .t-author strong { color: var(--text); display: block; }
+
+  /* ─── MID CTA ─── */
+  .mid-cta {
+    background: var(--off-white);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-al
+    margin: 0 0 56px;
+  }
+  .mid-cta p {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+  .mid-cta p strong { color: var(--text); }
+  .btn-primary-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 15px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(26,92,255,0.3);
+  }
+  .btn-primary-dark:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,92,255,0.38);
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-section {
+    padding: 0 24px 56px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .steps-list::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: ttom: 24px;
+    width: 2px;
+    background: var(--gray-light);
+  }
+  .step-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-circle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 6px white, 0 0 0 7px var(--gray-light);
+  }
+  .step-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ─── MARKET CONTEXT ─── */
+  .market-section {
+    background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+    border-top: 1px solid #dde4ff;
+    border-bottom: 1px solid #dde4ff;
+    padding: 44px 24px;
+    margin-bottom: rket-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .market-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .market-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .market-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .market-label { font-size: 12px; color: var(--gray); line-height: 1.4; }
+  .market-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section {
+    padding: 56px 24px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--gray-light);
+    padding: 20px 0;
+  }
+  .faq-item:first-of-type { border-top: 1px solid var(--gray-light); }
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    gap: 12px;
+    user-select: none;
+  }
+  .faq-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--off-white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--blue);
+    font-weight: 700;
+    transition: transform 0.3s;
+  }
+  .faq-a {
+    font-size: 14.5px;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-top: 12px;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue); color: white; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    background: linear-gradient(155deg, var(--navy) 0%, #1a3a60 100%);
+    padding: 60px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    contenosition: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(26,92,255,0.20) 0%, transparent 70%);
+  }
+  .final-cta-inner { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; }
+  .final-cta h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 4.5vw, 34px);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .final-cta h2 em { font-style: normal; color: var(--gold); }
+  .final-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+  }
+  .final-btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    padding: 24px;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+     }
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-brand span { color: var(--gold); }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  /* ─── STICKY MOBILE CTA ─── */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 14px 20px;
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .sticky-cta-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.3;
+  }
+  .sticky-cta-text strong { color: ay: block; font-size: 14px; }
+  .sticky-btn {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 520px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .market-cards { grid-template-columns: 1fr 1fr; }
+    .badges-inner { justify-content: flex-start; gap: 20px; }
+    .badge-divider { display: none; }
+    .step-preview { flex-wrap: wrap; gap: 6px; }
+    .featured-stats { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 70px; }
+    .nav-trust { display: none
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Makler<span>Auskunft</span></a>
+  <div class="nav-trust">
+    <span class="stars">★★★★★</span>
+    <strong>4.8/5</strong> aus 2.347 Bewertungen
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="trust-bar">
+      <span class="stars">★★★★★</span>
+      4.8/5 &nbsp;<span class="sep">|</span>&nbsp; 2.347 verifizierte Bewertungen &nbsp;<span class="sep">|</span>&nbsp; 800+ Berliner Verkäufer vermittelt
+    </div>
+
+    <h1>Welcher Berliner Makler erzielt den <em>höchsten Preis</em> für Ihre Immobilie?</h1>
+
+    <p class="hero-sub">Kostenlose Empfehlung in 2 Minuten – basierend auf echten Verkaufsergebnissen in Ihrem Kiez.</p>
+
+    <div class="step-preview">
+      <div class="step-item"><div class="step-num">1</div> PLZ eingeben</div>
+      <span class="step-arrow">→</span>
+      <div class="step-item"><div class="step-num">2</div> 2 kurze Fragen</div>
+      <span class="step-arrow""step-item"><div class="step-num">3</div> Top-Makler vergleichen</div>
+    </div>
+
+    <div class="cta-group">
+      <button class="btn-primary" onclick="scrollToIntent()">
+        Ich möchte verkaufen <span class="arrow">→</span>
+      </button>
+      <button class="btn-secondary" onclick="scrollToIntent()">Kaufen</button>
+      <button class="btn-secondary" onclick="scrollToIntent()">Vermieten</button>
+      <button class="btn-secondary" onclick="scrollToIntent()">Mieten</button>
+    </div>
+
+    <div class="micro-trust">
+      <span><span class="check">✓</span> 100% kostenlos</span>
+      <span><span class="check">✓</span> Keine Anmeldung</span>
+      <span><span class="check">✓</span> Unverbindlich</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<div class="badges-section">
+  <div class="badges-inner">
+    <div class="badge">
+      <div class="badge-num">20.000+</div>
+      <div class="badge-label">geprüfte Makler<br>in Deutschland</div>
+    </div>
+    <div class="badge-divider"><<div class="badge">
+      <div class="badge-num">800+</div>
+      <div class="badge-label">Verkäufer in Berlin<br>erfolgreich vermittelt</div>
+    </div>
+    <div class="badge-divider"></div>
+    <div class="badge">
+      <div class="badge-num">2 Min.</div>
+      <div class="badge-label">Ø Zeit bis zur<br>ersten Empfehlung</div>
+    </div>
+    <div class="badge-divider"></div>
+    <div class="badge">
+      <div class="badge-num">4.8★</div>
+      <div class="badge-label">Ø Bewertung<br>aus 2.347 Reviews</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+
+  <div class="section-label">Echte Ergebnisse aus Berlin</div>
+  <h2 class="section-title">Was Berliner Verkäufer mit unserem Service erreicht haben</h2>
+
+  <!-- FEATURED TESTIMONIAL -->
+  <div class="testimonial-featured">
+    <div class="featured-badge">🏆 Stärkstes Ergebnis in Berlin 2025</div>
+    <p class="featured-quote">„Ich habe <strong>38.000 € mehr bekommen</strong> als meine ursprüngliche Einschäthlene Makler kannte Charlottenburg in- und auswendig und hat den richtigen Käufer gefunden."</p>
+    <div class="featured-meta">
+      <div class="featured-author">
+        <strong>Petra B.</strong>
+        Berlin-Charlottenburg · Apr. 2025 · Eigentumswohnung
+      </div>
+      <div class="featured-stats">
+        <div class="feat-stat">
+          <div class="feat-stat-num">+38.000 €</div>
+          <div class="feat-stat-label">über Erstbewertung</div>
+        </div>
+        <div class="feat-stat">
+          <div class="feat-stat-num">19 Tage</div>
+          <div class="feat-stat-label">bis Verkauf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID TESTIMONIALS -->
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">„Innerhalb von 48 Stunden hatte ich 3 qualifizierte Maklerempfehlungen. Die Auswahl war übersichtlich – ich konnte schnell entscheiden."</p>
+      <div class="t-author"><strong>Mlin-Mitte · Mehrfamilienhaus</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">„Als Käufer endlich einen Makler gefunden, der verstanden hat, was ich wirklich suche. Keine Massenbesichtigungen – gezielte Vorschläge."</p>
+      <div class="t-author"><strong>Jan R.</strong> Berlin-Prenzlauer Berg</div>
+    </div>
+  </div>
+
+  <!-- MID-CTA -->
+  <div class="mid-cta" id="intent-section">
+    <p><strong>Jetzt ist ein guter Zeitpunkt in Berlin.</strong><br>Der Markt ist aktiv – finden Sie den Makler, der das Maximum herausholt.</p>
+    <button class="btn-primary-dark" onclick="alert('Funnel startet hier')">
+      Jetzt meinen Berliner Makler finden →
+    </button>
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding: 0 24px 56px; max-width: 680px; margin: 0 auto;">
+  <div class="section-label">So funktioniert es</div>
+  <h2 class="section-title">In 3 Schritten zum besten Makler</h2>
+  <div class="steps-list">
+    ">
+      <div class="step-circle">1</div>
+      <div class="step-content">
+        <h3>PLZ eingeben & Immobilie beschreiben</h3>
+        <p>2 kurze Fragen zu Ihrer Immobilie – dauert unter 2 Minuten. Keine Anmeldung, kein Passwort.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-circle">2</div>
+      <div class="step-content">
+        <h3>Wir analysieren 20.000+ Makler</h3>
+        <p>Unser System gleicht Ihre Immobilie mit Verkaufsergebnissen, Bewertungen und lokaler Expertise ab. Nur die Top 15% werden empfohlen.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-circle">3</div>
+      <div class="step-content">
+        <h3>Profile vergleichen – Sie entscheiden</h3>
+        <p>Sie sehen 3 passende Makler mit echten Bewertungen und Verkaufsergebnissen. Kein Vertrag, kein Druck. Sie wählen frei.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET CONTEXT -->
+<section class="market-section">
+  <div class="market-inner">
+    <div class="sn-label">Berliner Immobilienmarkt 2026</div>
+    <h2 class="section-title" style="margin-bottom: 8px;">Der Berliner Markt ist aktiv –<br>der richtige Makler macht den Unterschied</h2>
+    <p style="font-size: 14px; color: var(--gray);">Mit einem erfahrenen Berliner Makler erzielen Verkäufer im Schnitt deutlich bessere Ergebnisse als ohne Vermittlung.</p>
+    <div class="market-cards">
+      <div class="market-card">
+        <div class="market-num">+12%</div>
+        <div class="market-label">höherer Verkaufspreis mit vermitteltem Makler</div>
+      </div>
+      <div class="market-card">
+        <div class="market-num">48h</div>
+        <div class="market-label">Ø bis zur ersten Makler-Empfehlung</div>
+      </div>
+      <div class="market-card">
+        <div class="market-num">100%</div>
+        <div class="market-label">kostenlos – für Verkäufer und Käufer</div>
+      </div>
+    </div>
+    <p class="market-note">* Basierend auf internen Vermittlungsdaten 2024–2025</p>
+  </div>
+</section>
+
+<!-- tion class="faq-section">
+  <div class="section-label">Transparenz</div>
+  <h2 class="section-title">Ihre Fragen – ehrliche Antworten</h2>
+
+  <div class="faq-item open">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Was kostet mich das?
+      <div class="faq-icon">+</div>
+    </div>
+    <div class="faq-a">Nichts. Wirklich nichts. Wir werden von Maklern bezahlt – aber nur dann, wenn Sie zufrieden sind und sich aktiv für einen entscheiden. Kein Erfolg = keine Gebühr für niemanden. Für Sie entstehen keinerlei Kosten oder versteckte Gebühren.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Wie sicher sind meine Daten?
+      <div class="faq-icon">+</div>
+    </div>
+    <div class="faq-a">Ihre Daten sehen nur die Makler, die <em>Sie</em> aktiv auswählen – nicht vorher. Kein Spam, kein Datenverkauf an Dritte. DSGVO-konform seit Tag 1. <a href="/datenschutz" style="color: var(--blue);">→ Datenschutzerklärung lesen</a></div>
+  </div>
+
+  <div c>
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Was, wenn mir keiner der Makler gefällt?
+      <div class="faq-icon">+</div>
+    </div>
+    <div class="faq-a">Dann sagen Sie einfach nein. Kein Vertrag, keine Verpflichtung. Wir zeigen Ihnen Alternativen oder Sie gehen ohne Begründung. Das ist Ihr gutes Recht – und wir respektieren das.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Wie gut sind die empfohlenen Makler wirklich?
+      <div class="faq-icon">+</div>
+    </div>
+    <div class="faq-a">Wir analysieren Verkaufsergebnisse, Kundenbewertungen, Reaktionszeiten und lokale Marktkenntnisse. Nur die Top 15% unseres Netzwerks werden aktiv empfohlen – der Rest nicht. So stellen wir sicher, dass jede Empfehlung wirklich passt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Wie funktioniert der Service genau?
+      <div class="faq-icon">+</div>
+    </div>
+    <div class="faq-a">Geben Sie Ihre Berlostleitzahl ein und beantworten Sie 2 kurze Fragen zu Ihrer Immobilie. Wir matchen Sie dann mit den besten Maklern für Ihre Region und Immobilienart. Sie vergleichen Profile und entscheiden – alles in unter 5 Minuten.</div>
+  </div>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Finden Sie jetzt den Berliner Makler, der <em>das Maximum</em> herausholt</h2>
+    <p>Kostenlos · Unverbindlich · In 2 Minuten</p>
+    <div class="final-btn-wrap">
+      <button class="btn-primary" onclick="scrollToIntent()" style="font-size: 17px; padding: 18px 36px;">
+        Jetzt kostenlos starten <span class="arrow">→</span>
+      </button>
+      <span style="font-size: 13px; color: rgba(255,255,255,0.4);">Keine Anmeldung erforderlich</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Makler<span>Auskunft</span> Deutschland</div>
+    <div class="footer-links">
+      <a href="/impressum">Impressum</  <a href="/datenschutz">Datenschutz</a>
+    </div>
+  </div>
+  <p class="footer-copy">Copyright © 2026 – Alle Rechte vorbehalten.</p>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-text">
+    <strong>Besten Berliner Makler finden</strong>
+    Kostenlos · In 2 Minuten
+  </div>
+  <button class="sticky-btn" onclick="scrollToIntent()">Jetzt starten →</button>
+</div>
+
+<script>
+  function scrollToIntent() {
+    document.getElementById('intent-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function toggleFaq(el) {
+    el.closest('.faq-item').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
